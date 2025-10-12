@@ -147,6 +147,12 @@ CREATE INDEX IF NOT EXISTS idx_recipe_ingredients_ingredient ON recipe_ingredien
 CREATE INDEX IF NOT EXISTS idx_recipe_steps_recipe ON recipe_steps (recipe_id);
 CREATE INDEX IF NOT EXISTS idx_recipe_nutrition_recipe ON recipe_nutrition_cache (recipe_id);
 CREATE INDEX IF NOT EXISTS idx_ingredient_name ON ingredients USING btree (name text_pattern_ops);
+-- enable pg_trgm extension (needs superuser)
+CREATE EXTENSION IF NOT EXISTS pg_trgm;
+-- create trigram GIN index on lower(name) for fast fuzzy lookups
+CREATE INDEX IF NOT EXISTS idx_ingredients_name_trgm ON ingredients USING GIN (LOWER(name) gin_trgm_ops);
+-- (optional) pattern-op index for ILIKE speed as fallback
+CREATE INDEX IF NOT EXISTS idx_ingredients_name_lower_pattern ON ingredients (LOWER(name) varchar_pattern_ops);
 
 -- =========================
 -- Sample reference data (small) - safe to keep for local testing

@@ -1,0 +1,134 @@
+/* wrapper: keep .cards centered in home.css (we assume that's present) */
+
+/* card - layout like your sketch:
+   - big image area on top-left,
+   - summary below the image (right area),
+   - actions (X & heart) bottom-right
+*/
+
+/* RecipeCard.css — add / replace these rules */
+
+/* card outer (already used) */
+.recipe-card {
+  width: 720px;               /* adjust to your preferred card width */
+  max-width: calc(100% - 48px);
+  margin: 18px auto;
+  border-radius: 12px;
+  overflow: visible;
+  background: #fff;
+  box-shadow: 0 6px 24px rgba(10,40,20,0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+/* image container: fixed aspect ratio box, centers image and hides overflow */
+.card-image-wrap {
+  width: 100%;
+  height: 320px;              /* desired visible image height — change as needed */
+  background: #f2f2f2;        /* placeholder color while image loads */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 10px 10px 0 0; /* rounded corners at top */
+}
+
+/* the img element fills the container and preserves aspect ratio while covering */
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;     /* <-- important: fill container while cropping if needed */
+  object-position: center;
+  display: block;
+}
+
+/* if you want the image to have an inset shadow */
+.card-image-wrap::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  inset: 0;
+}
+
+/* card bottom area (title, summary, buttons) */
+.card-bottom {
+  padding: 18px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+/* responsive: reduce height on small screens */
+@media (max-width: 800px) {
+  .recipe-card { width: calc(100% - 30px); }
+  .card-image-wrap { height: 220px; }
+}
+
+
+/* title & summary */
+.card-title {
+  font-weight: 700;
+  color: #153a25;
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+
+.card-summary {
+  color: #4a564a;
+  font-size: 14px;
+  line-height: 1.35;
+  min-height: 40px;
+}
+
+/* instructions panel - collapsible */
+.instructions-panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 260ms ease;
+  margin-top: 6px;
+}
+
+/* when card has .expanded, open the panel */
+.recipe-card.expanded .instructions-panel {
+  max-height: 360px; /* high enough to show multiple steps */
+}
+
+/* instruction list styling */
+.instructions {
+  margin: 6px 0 0 18px;
+  padding: 0;
+  color: #2e3b30;
+  font-size: 14px;
+}
+
+/* actions row aligned right */
+.card-actions {
+  position: absolute;
+  bottom: 10px;
+  right: 12px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  touch-action: pan-x;  /* allow horizontal drag on buttons */
+}
+
+/* icon buttons (bigger, no text) */
+.btn-icon {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  padding: 8px;
+  border-radius: 8px;
+  transition: transform 150ms ease, background 150ms ease;
+}
+
+.btn-icon:hover { transform: scale(1.12); background: rgba(0,0,0,0.02); }
+
+.btn-icon.like { color: #e43f5a; }       /* red heart color */
+.btn-icon.dislike { color: #9b2f2f; }    /* red cross color */
+
+/* subtle hover lift for the whole card */
+.recipe-card:hover { transform: translateY(-6px); box-shadow: 0 18px 42px rgba(8, 45, 20, 0.08); }
+
