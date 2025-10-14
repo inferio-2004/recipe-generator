@@ -11,7 +11,7 @@ const app = express();
 app.use(cors());
 app.use(express.json({ limit: '10mb' }));
 // Simple health check endpoint for Render
-app.get('/health', (req, res) => res.send('ok')));
+app.get('/health', (req, res) => res.send('ok'));
 app.use('/auth', authRouter);
 app.use('/api/recipes', recipesRouter);
 app.use('/api/recognize', recognizeRouter);
