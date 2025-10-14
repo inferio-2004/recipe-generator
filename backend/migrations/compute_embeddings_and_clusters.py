@@ -19,7 +19,7 @@ from tqdm import tqdm
 
 # load .env from project root (two levels up from this file)
 root_dir = pathlib.Path(__file__).resolve().parents[2]
-load_dotenv(dotenv_path=root_dir / ".env")
+load_dotenv(dotenv_path="C:\\Users\\Aniruth\\Desktop\\receipe_generator\\backend\\.env")
 
 DATABASE_URL = os.environ.get("DATABASE_URL")
 if not DATABASE_URL:
