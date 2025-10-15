@@ -232,6 +232,16 @@
   border-radius:8px;
 }
 
+/* file input validation error */
+.file-error {
+  color: #b00020;       /* red for errors */
+  background: rgba(176,0,32,0.04);
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
 
 /* small screens */
 @media (max-width: 900px) {

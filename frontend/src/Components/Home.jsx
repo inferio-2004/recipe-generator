@@ -17,7 +17,7 @@ export default function Home({ token, user, onLogout }) {
   const [inputValue, setInputValue] = useState(''); // current typing text (not the CSV)
   const [suggestions, setSuggestions] = useState([]); // filtered suggestions dropdown
   const [showSuggestions, setShowSuggestions] = useState(false);
-
+  const [fileError, setFileError] = useState(''); // img extnsion error
   // keep ingredientsText for compatibility with your existing code
   const [ingredientsText, setIngredientsText] = useState('');
 
@@ -123,6 +123,14 @@ export default function Home({ token, user, onLogout }) {
     return () => { mounted = false; };
   }, []); // runs only once
 
+  function isValidImageFile(f) {
+    if (!f) return false;
+    const name = (f.name || '').toLowerCase();
+    const extOk = /\.(jpe?g|png|webp)$/i.test(name);
+    const mimeOk = /^image\/(jpeg|jpg|png|webp)$/.test((f.type || '').toLowerCase());
+    return extOk && (mimeOk || /^image\//.test(f.type || '')); 
+  }
+
   function applyClientFiltersAndLimit(list, filtersObj) {
     if (!Array.isArray(list)) {
       setVisibleRecipes([]);
@@ -151,7 +159,27 @@ export default function Home({ token, user, onLogout }) {
 
   function onFileSelected(e) {
     const f = e.target.files?.[0];
-    if (f) setFile(f);
+    if (!f) {
+      setFile(null);
+      setPreview(null);
+      setFileError('');
+      return;
+    }
+
+    if (!isValidImageFile(f)) {
+      // invalid file selected
+      setFile(null);
+      setPreview(null);
+      setFileError('This image extn is not supported. Try an image with these extns: jpeg, jpg, png, webp');
+      // reset the input so re-selecting the same bad file fires change again if needed
+      try { e.target.value = ''; } catch (_) {}
+      return;
+    }
+
+    // valid file
+    setFileError('');
+    setFile(f);
+
   }
 
   // ---------- Autocomplete / Chips helpers ----------
@@ -271,6 +299,7 @@ export default function Home({ token, user, onLogout }) {
   // --------------- recognition / search (unchanged except using ingredientsText) ----------------
   async function handleUpload() {
     if (!file) return;
+    if (fileError) { setMsg('Please choose a supported image before uploading.'); return; }
     setLoading(true);
     setMsg('Recognizing...');
     try {
@@ -413,7 +442,7 @@ export default function Home({ token, user, onLogout }) {
             <input
               ref={inputRef}
               type="file"
-              accept="image/*"
+              accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp"
               onChange={onFileSelected}
               style={{ display: 'none' }}
             />
@@ -436,7 +465,11 @@ export default function Home({ token, user, onLogout }) {
               {loading ? 'Recognizing...' : 'Upload & Recognize'}
             </button>
           </div>
-
+          {fileError && (
+           <div className="file-error" role="alert" aria-live="polite" style={{ marginTop: 8 }}>
+             {fileError}
+           </div>
+          )}
           <form onSubmit={searchRecipes} className="ingredients-form" style={{ marginTop: 12 }}>
             <label className="field full">
               <span>Is this your final list? (add from suggestions or type and press Enter)</span>
