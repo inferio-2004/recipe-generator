@@ -68,19 +68,19 @@ The app combines *vector embeddings*, *ingredient matching*, and *user history l
 ## 🖼️ Screenshots
 
 ### 🔹 Login
-![Login Screenshot](<img width="1919" height="951" alt="Screenshot 2025-10-16 104906" src="https://github.com/user-attachments/assets/811d7ae6-6d33-468f-b1ea-63203129f6bf" />)
+<img width="1919" height="951" alt="Screenshot 2025-10-16 104906" src="https://github.com/user-attachments/assets/811d7ae6-6d33-468f-b1ea-63203129f6bf" />
 
 ### 🔹 Sign Up
-![Signup Screenshot](<img width="1919" height="942" alt="Screenshot 2025-10-16 104924" src="https://github.com/user-attachments/assets/9a7ff643-aab4-4d0d-926b-337a6c0dd1bd" />)
+<img width="1919" height="942" alt="Screenshot 2025-10-16 104924" src="https://github.com/user-attachments/assets/9a7ff643-aab4-4d0d-926b-337a6c0dd1bd" />
 
 ### 🔹 Ingredient Recognition
-![Ingredient Recognition](<img width="1919" height="791" alt="Screenshot 2025-10-16 105123" src="https://github.com/user-attachments/assets/3c79fe88-0de4-4753-8ba6-b65bf81c781c" />)
+<img width="1919" height="791" alt="Screenshot 2025-10-16 105123" src="https://github.com/user-attachments/assets/3c79fe88-0de4-4753-8ba6-b65bf81c781c" />
 
 ### 🔹 Recipe Results
-![Recipe Results](<img width="1906" height="914" alt="Screenshot 2025-10-16 105212" src="https://github.com/user-attachments/assets/5b30a061-1a51-49cc-9976-721909ff20d6" />)
+<img width="1906" height="914" alt="Screenshot 2025-10-16 105212" src="https://github.com/user-attachments/assets/5b30a061-1a51-49cc-9976-721909ff20d6" />
 
 ### 🔹 Personalized Recommendations
-![Recommendations](<img width="1885" height="823" alt="Screenshot 2025-10-16 105234" src="https://github.com/user-attachments/assets/88ca8d01-7c7d-4b85-87dc-08981e5b6fd3" />)
+<img width="1885" height="823" alt="Screenshot 2025-10-16 105234" src="https://github.com/user-attachments/assets/88ca8d01-7c7d-4b85-87dc-08981e5b6fd3" />
 
 ---
 
