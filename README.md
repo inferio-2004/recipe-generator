@@ -210,4 +210,4 @@ Access: [http://localhost:3000](http://localhost:3000)
 ---
 
 > _“Cooking is an art; recommending is a science.”_  
-> **— Smart Recipe Generator Team**
+
