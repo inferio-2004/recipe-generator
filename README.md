@@ -198,11 +198,14 @@ Access: [http://localhost:3000](http://localhost:3000)
 
 ---
 
+## 🧠 Future Works
+- Add more ingredients and recipes in the database to get better results
+- Better ingredient recognition models
+
+
 ## 🧑‍💻 Author
 
-**Hema Malini Sriram**  
-💼 Segment Head & Foundation Stage Coordinator  
-📧 [Contact via GitHub Issues]()
+**Aniruth Narayanan S**  
 
 ---
 
